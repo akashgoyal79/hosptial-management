@@ -1,0 +1,19 @@
+<%-include("../partials/header")%>
+<%doctors.forEach( doctor => {%>
+<div class="container mt-5 p-5 border media-container">
+	<div class="media">
+  		<img class="align-self-center mr-3" 
+		     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQRXCPRGegUlUyy1PLJ8FkBmSNt4-lpOiGVCQ&usqp=CAU" 	 	      alt="Generic placeholder image">
+		<div class="media-body">
+			<h5 class="mt-0"><a href="#">Dr. <%=doctor.fname%> <%=doctor.lname%></a></h5>
+			<p><strong>Specialization : </strong><%=doctor.specialization%></p>
+			<p><strong>Email : </strong><%=doctor.username%></p>  
+			<a class="btn btn-md btn-success" href="/doctors/<%=doctor._id%>/register/edit">View and edit 		             	 	    profile</a>
+			<form class="d-inline" action="/doctors/<%=doctor.id%>?_method=DELETE" method="POST">
+				<button class="btn btn-md btn-danger">Delete doctor</button>
+			</form>
+		</div>
+	</div>
+</div>
+<%})%>
+<%-include("../partials/footer")%>

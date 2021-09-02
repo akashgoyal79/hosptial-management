@@ -1,0 +1,63 @@
+<%-include("../partials/header")%>
+<div class="card mt-5">
+  <div class="card-body">
+    <h1 class="py-5 text-center display-3">ONLINE RECEPTION</h1>
+	 <%if(patient.paChat.length == 0){%>
+    <h5 class="card-text p-5">No Chats Yet.</h5>
+	  <%}%>
+	  <%patient.paChat.forEach((chat)=>{%>
+	  
+	  <%if(chat.isRequestingDoctor){%>
+	  <div class="px-5 pb-4">
+		  <strong class="px-1" style="font-size:1.2rem;background:black;color:white;"><%=chat.author.toUpperCase()%></strong>
+		  <strong><h6>Doctor Request</h6></strong>
+	  	<div>
+			<strong>Name :</strong> <%=chat.doctorRequest.fname + " "+chat.doctorRequest.lname%><br>
+			<strong>E-mail :</strong> <%=chat.doctorRequest.email%><br>
+			<strong>Age :</strong> <%=chat.doctorRequest.age%><br>
+			<strong>Gender :</strong> <%=chat.doctorRequest.gender%><br>
+			<strong>Problem :</strong> <%=chat.doctorRequest.problem%>
+      	</div>
+		  <%if(currentUser.isAdmin){%>
+		  <a href="/allocate/<%=id%>/<%=patient._id%>" class="btn btn-primary mt-2">Allocate doctor</a>
+		  <%}%>
+		  <hr>
+	  </div>
+	  
+	  <%}else if(chat.isSendingReport){%> 
+	  <div class="px-5 pb-4">
+		   <strong class="px-1" style="font-size:1.2rem;background:black;color:white;"><%=chat.author.toUpperCase()%></strong>
+		  <strong><h6>Report</h6></strong>
+		  <div>
+			  <strong>Problem : </strong><%=chat.report.problem%><br>
+			  <strong>Title :</strong><%=chat.report.reportTitle%><br><br>
+			  <img src="<%=chat.report.reportLink%>" style="width:50%;">
+		  </div>
+		  <hr>
+	  </div>
+	  
+	  <%}else{%>
+	  <div class="px-5 pb-4">
+		  <strong class="px-1" style="font-size:1.2rem;background:black;color:white;"><%=chat.author.toUpperCase()%></strong>
+		  <p>
+			  <%=chat.text%>
+		  </p>
+		  <hr>
+	  </div>
+	  
+	  
+	  <%}%>
+	  
+	  <%});%>
+  </div>
+  
+	
+</div>
+<a href="/admin/message/<%=patient._id%>" class="btn btn-success m-3">Message</a>
+<%if(currentUser.isPatient){%>
+	<a href="/request/doctor" class="btn m-3 btn-success">Ask for a Doctor</a>
+	<%}%>
+<%if(currentUser.isAdmin){%>
+	<a href="/admin/<%=id%>/report/new" class="btn m-3 btn-success">Send a report</a>
+	<%}%>
+<%-include("../partials/footer")%>

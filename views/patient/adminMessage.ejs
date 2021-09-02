@@ -1,0 +1,21 @@
+<%-include("../partials/header")%>
+
+<div class="login-container mt-5 p-5 border">
+	<h1 class="text-center mb-5 pb-5 display-3">
+		SEND MESSAGE
+	</h1>
+	<form action="/admin/message/<%=id%>" method="POST">
+		
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Message</label>
+	  <textarea class="form-control" id="exampleInputPassword1" placeholder="Do you want to ask something?" name="message" rows="4"></textarea>
+  </div>
+		
+		
+  <div class="form-check"></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<%-include("../partials/footer")%>

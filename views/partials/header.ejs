@@ -1,0 +1,49 @@
+<! DOCTYPE html>
+<html>
+	<head>
+		<title>HealthCare</title>
+		<link rel="stylesheet" 
+			  href="/css/style.css">
+		<link rel="stylesheet" 
+			  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+			  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"                    	           crossorigin="anonymous">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  			<div class="container">	
+  				<a class="navbar-brand" href="#">HealthCare</a>
+  				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"       				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    				<span class="navbar-toggler-icon"></span>
+  				</button>
+  				<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+					<%if(currentUser && currentUser.isAdmin){%>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active mr-5" href="/doctor/register">Add a Doctor</a>
+						<a class="nav-item nav-link active mr-5" href="/patients">Online Reception</a>
+						<a class="nav-item nav-link active mr-5" href="/doctors">See all Doctors</a>
+						<a class="nav-item nav-link active mr-0" href="/logout">Logout</a>
+					</div>
+					<%} else if(currentUser && currentUser.isPatient){%>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active mr-3" href="/patient/doctors">Allocated Doctors</a>
+						<a class="nav-item nav-link active mr-3" href="/request/doctor">Ask for a Doctor</a>
+						<a class="nav-item nav-link active mr-3" href="/patient/chat/<%=currentUser._id%>">Online Reception</a>
+						<a class="nav-item nav-link active mr-3" href="/patient/register/edit">View and Edit       	       	   	   	   	   	   profile</a>
+						<a class="nav-item nav-link active mr-0" href="/logout">Logout</a>
+					</div>
+					<%} else if(currentUser && currentUser.isDoctor){%>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active mr-5" href="/doctor/register/view">View Profile</a>
+						<a class="nav-item nav-link active mr-0" href="/logout">Logout</a>
+					</div>
+					<%} else{%>
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active mr-5" href="/patient/register">Register</a>
+						<a class="nav-item nav-link active mr-5" href="/patient/login">Patient Login</a>
+						<a class="nav-item nav-link active mr-5" href="/doctor/login">Doctor Login</a>
+						<a class="nav-item nav-link active mr-0" href="/admin/login">Management Login</a>	
+					</div>
+					<%}%>
+				</div>
+			</div>	  
+		</nav>

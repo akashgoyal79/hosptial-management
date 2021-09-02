@@ -1,0 +1,30 @@
+<%-include("../partials/header")%>
+
+
+<div class="container mt-5 p-5 <%if(doctors.length==0){%>border<%}%>">
+	<div class="text-center display-3">
+		<%if(doctors.length==0){%>
+		No Doctors Allocated Yet.
+		<%}else{%>
+		Allocated Doctors
+		<%}%>
+	</div>
+</div>
+
+<%doctors.forEach( doctor => {%>
+<div class="container mt-5 mb-3 p-5 border media-container">
+	<div class="media">
+  		<img class="align-self-center mr-3" 
+		     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQRXCPRGegUlUyy1PLJ8FkBmSNt4-lpOiGVCQ&usqp=CAU" 	 	      alt="Generic placeholder image">
+		<div class="media-body">
+			<h5 class="mt-0"><a href="#">Dr. <%=doctor.fname%> <%=doctor.lname%></a></h5>
+			<p><strong>Specialization : </strong><%=doctor.specialization%></p>
+			<p><strong>Email : </strong><%=doctor.username%></p>  
+			<a class="btn btn-md btn-success" href="/doctor/<%=doctor._id%>/patient/<%=patient._id%>">Have a Chat</a>
+		</div>
+	</div>
+</div>
+<%})%>
+
+
+<%-include("../partials/footer")%>

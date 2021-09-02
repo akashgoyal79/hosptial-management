@@ -1,0 +1,27 @@
+<%-include("../partials/header")%>
+
+<div class="login-container mt-5 p-5 border">
+	<h1 class="display-4 pb-5 text-center">
+		SEND REPORT
+	</h1>
+	<form action="/doctor/<%=did%>/patient/<%=pid%>/report" method ="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Problem</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Please write your problem in detail" name="report[problem]">
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Report Title</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Title" name="report[reportTitle]">
+  </div>
+		
+		 <div class="form-group">
+    <label for="exampleInputPassword2">Report Link</label>
+    <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Title" name="report[reportLink]">
+  </div>
+  <div class="form-check"></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<%-include("../partials/footer")%>

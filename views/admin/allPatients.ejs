@@ -1,0 +1,21 @@
+<%-include("../partials/header")%>
+<%patients.forEach( patient => {%>
+<div class="container mt-5 p-5 border media-container">
+	<div class="media">
+  		<img class="align-self-center mr-3" 
+		     src="https://www.startyouruprise.com/images/graphics/patient-profile.png" style="width:15%;">
+		<div class="media-body">
+			<h5 class="mt-0"><a href="#"><%=patient.fname%> <%=patient.lname%></a></h5>
+			<p><strong>Email : </strong><%=patient.username%></p> 
+			<p><strong>Age : </strong><%=patient.age%></p>
+			<p><strong>Gender : </strong><%=patient.gender%></p>
+			<%users.forEach(user=>{%>
+			<%if(patient.username == user.username){%>
+			<a class="btn btn-md btn-success" href="/patient/chat/<%=user._id%>">See Patient</a>
+			<%}%>
+			<%});%>
+		</div>
+	</div>
+</div>
+<%})%>
+<%-include("../partials/footer")%>

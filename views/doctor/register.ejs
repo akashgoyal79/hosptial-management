@@ -1,0 +1,47 @@
+<%-include("../partials/header")%>
+
+<div class="container mt-5 p-5">
+	<h1 class="text-center mb-5 pb-5 display-3">
+		DOCTOR REGISTRATION FORM
+	</h1>
+	<form action="/doctor/register" method="POST">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputFname4">First Name</label>
+				<input type="text" class="form-control" id="inputFname4" placeholder="First Name"                    	 	 	 	 name="doctor[fname]">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputLname4">Last Name</label>
+				<input type="text" class="form-control" id="inputLname4" placeholder="Last Name" name="doctor[lname]">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail4">Email</label>
+			<input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="doctor[username]">
+		</div>
+		<div class="form-group">
+			<label for="inputPassword4">Password</label>
+			<input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputAge">Specialization</label>
+				<input type="text" class="form-control" id="inputAge" placeholder="Specialization"      	   	           	   	   	    name="doctor[specialization]">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputGender">Gender</label>
+				<select id="inputGender" class="form-control" required name="doctor[gender]">
+					<option selected>Select Gender</option>  
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Others">Others</option>  
+				</select>
+			</div>
+		</div>
+		<div class="mt-4">
+			<button class="btn btn-primary d-block m-auto patient-btn">Submit</button>
+		</div>
+	</form>
+</div>
+
+<%-include("../partials/footer")%>

@@ -1,0 +1,32 @@
+<%-include("../partials/header")%>
+<div class="container mt-5 pt-5">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sno.</th>
+      <th scope="col">Doctor Name</th>
+      <th scope="col">Specialization</th>
+      <th scope="col">Allocate</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <%doctors.forEach((doctor,i)=>{%>
+	  <tr>
+      	<th scope="row"><%=i+1%></th>
+      	<td>Dr. <%=doctor.fname + " "+ doctor.lname%></td>
+      	<td><%=doctor.specialization%></td>
+      	<td><form action="/<%=id%>/patient/<%=pid%>/allocate/doctor/<%=doctor._id%>" method="POST">
+			<button class="btn btn-primary">Allocate</button>
+			</form></td>
+      </tr>
+	  
+	  <%})%>  
+    
+    
+  </tbody>
+</table>
+	<a href="/patient/chat/<%=id%>" class="btn btn-success">Back</a>
+</div>
+
+
+<%-include("../partials/footer")%>
